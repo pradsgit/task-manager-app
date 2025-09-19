@@ -46,16 +46,3 @@ function App() {
 }
 
 export default App
-
-
-/**
-  const firebaseConfig = {
-    apiKey: "AIzaSyD5akDUsHFUrIeb8dyR-jo22tvmAm-Trhk",
-    authDomain: "task-manager-app-5c177.firebaseapp.com",
-    projectId: "task-manager-app-5c177",
-    storageBucket: "task-manager-app-5c177.firebasestorage.app",
-    messagingSenderId: "631179623680",
-    appId: "1:631179623680:web:13673bcd5e47aa495647e5",
-    measurementId: "G-B4GGDV56GK"
-  };
- */
