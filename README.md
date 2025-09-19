@@ -2,9 +2,6 @@
 
 A task management application with AI-powered motivational tips using Firebase and OpenAI.
 
-## Live Demo
-[Your Firebase Hosting URL Here]
-
 ## Features
 
 - Create and complete tasks
