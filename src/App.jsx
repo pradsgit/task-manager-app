@@ -2,34 +2,91 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { AuthProvider } from './context/AuthContext'
+import useAuth from './hooks/useAuth'
+import Login from './components/Login'
+import Header from './components/Header'
+
+// Main App Content Component
+function AppContent() {
+  const { user, loading } = useAuth();
+  const [count, setCount] = useState(0);
+
+  // Show loading spinner while checking auth status
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="flex items-center space-x-2">
+          <svg className="animate-spin h-8 w-8 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          <span className="text-lg text-gray-600">Loading...</span>
+        </div>
+      </div>
+    );
+  }
+
+  // Show Login component when user is null
+  if (!user) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="w-full max-w-md">
+          <Login />
+        </div>
+      </div>
+    )
+  }
+
+  // Show main app when user is authenticated
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <Header />
+      <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <div className="px-4 py-6 sm:px-0">
+          <div className="text-center">
+            <h1 className='text-4xl font-bold text-green-500'>Welcome to Task Manager!</h1>
+            <p className="mt-2 text-gray-600">You are successfully logged in.</p>
+          </div>
+          
+          <div className="mt-8 bg-white shadow rounded-lg p-6">
+            <div className="text-center">
+              <button 
+                onClick={() => setCount((count) => count + 1)}
+                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors duration-200"
+              >
+                Count is {count}
+              </button>
+              <p className="mt-4 text-gray-600">
+                This is your main app area. Task management features will be added here.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1 className='text-4xl font-bold text-green-500'>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
   )
 }
 
 export default App
+
+
+/**
+  const firebaseConfig = {
+    apiKey: "AIzaSyD5akDUsHFUrIeb8dyR-jo22tvmAm-Trhk",
+    authDomain: "task-manager-app-5c177.firebaseapp.com",
+    projectId: "task-manager-app-5c177",
+    storageBucket: "task-manager-app-5c177.firebasestorage.app",
+    messagingSenderId: "631179623680",
+    appId: "1:631179623680:web:13673bcd5e47aa495647e5",
+    measurementId: "G-B4GGDV56GK"
+  };
+ */
