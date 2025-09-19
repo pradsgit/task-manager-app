@@ -4,8 +4,7 @@ import useAuth from './hooks/useAuth'
 import Login from './components/Login'
 import TaskManager from './components/TaskManager'
 
-// Main App Content Component
-function AppContent() {
+const AppContent = () => {
   const { user, loading } = useAuth();
 
   // Show loading spinner while checking auth status
