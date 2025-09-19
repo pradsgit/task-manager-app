@@ -38,7 +38,7 @@ const useTasks = () => {
     const q = query(
       collection(db, 'tasks'),
       where('userId', '==', userId),
-      orderBy('createdAt', 'desc')
+    //   orderBy('createdAt', 'desc')
     );
 
     // Set up real-time listener

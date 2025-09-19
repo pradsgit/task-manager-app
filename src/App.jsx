@@ -1,16 +1,12 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import { AuthProvider } from './context/AuthContext'
 import useAuth from './hooks/useAuth'
 import Login from './components/Login'
-import Header from './components/Header'
+import TaskManager from './components/TaskManager'
 
 // Main App Content Component
 function AppContent() {
   const { user, loading } = useAuth();
-  const [count, setCount] = useState(0);
 
   // Show loading spinner while checking auth status
   if (loading) {
@@ -39,33 +35,7 @@ function AppContent() {
   }
 
   // Show main app when user is authenticated
-  return (
-    <div className="min-h-screen bg-gray-50">
-      <Header />
-      <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <div className="px-4 py-6 sm:px-0">
-          <div className="text-center">
-            <h1 className='text-4xl font-bold text-green-500'>Welcome to Task Manager!</h1>
-            <p className="mt-2 text-gray-600">You are successfully logged in.</p>
-          </div>
-          
-          <div className="mt-8 bg-white shadow rounded-lg p-6">
-            <div className="text-center">
-              <button 
-                onClick={() => setCount((count) => count + 1)}
-                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors duration-200"
-              >
-                Count is {count}
-              </button>
-              <p className="mt-4 text-gray-600">
-                This is your main app area. Task management features will be added here.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+  return <TaskManager />;
 }
 
 function App() {
