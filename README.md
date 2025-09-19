@@ -27,6 +27,13 @@ A task management application with AI-powered motivational tips using Firebase a
 
 **Error Handling**: Implemented comprehensive try-catch blocks for both Firestore operations and API calls, displaying user-friendly error messages instead of silent failures.
 
+## Development Process
+
+This project utilized AI assistance tools as part of the development workflow:
+- **Claude Sonnet**: Project planning and architecture decisions
+- **Cursor Agent**: Code implementation assistance
+- **Human oversight**: All major technical decisions, code review, and final implementation choices were made by me
+
 ### Challenges & Solutions
 
 - **API cost management**: Made AI motivation optional/on-demand rather than automatic for every task
